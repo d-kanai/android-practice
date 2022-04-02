@@ -17,10 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener {
-            val toast = Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT)
-            toast.show()
-            val resultTextView: TextView = findViewById(R.id.roll_text)
-            resultTextView.text = "6"
+            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
+            val resultTextView: TextView = (findViewById(R.id.roll_text))
+            resultTextView.text = Dice(6).roll().toString();
         }
     }
 
@@ -32,5 +31,12 @@ class MainActivity : AppCompatActivity() {
             putExtra(EXTRA_MESSAGE, message)
         }
         startActivity(intent)
+    }
+}
+
+class Dice(private val numSides: Int) {
+
+    fun roll(): Int {
+        return (1..numSides).random()
     }
 }
