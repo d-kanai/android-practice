@@ -15,22 +15,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val rollButton: Button = findViewById(R.id.roll_button)
         Log.v("APP_LOG", "Hello, world!")
+        diceRoll()
         rollButton.setOnClickListener {
             Log.v("APP_LOG", "dice roll")
-            val resultTextView: TextView = (findViewById(R.id.roll_text))
-            val diceValue = Dice(6).roll()
-            resultTextView.text = diceValue.toString()
-            val diceImage: ImageView = findViewById(R.id.dice_image)
-            when (diceValue) {
-                1 -> diceImage.setImageResource(R.drawable.dice_1)
-                2 -> diceImage.setImageResource(R.drawable.dice_2)
-                3 -> diceImage.setImageResource(R.drawable.dice_3)
-                4 -> diceImage.setImageResource(R.drawable.dice_4)
-                5 -> diceImage.setImageResource(R.drawable.dice_5)
-                6 -> diceImage.setImageResource(R.drawable.dice_6)
-            }
-            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
+            diceRoll()
         }
+    }
+
+    private fun diceRoll() {
+        val resultTextView: TextView = (findViewById(R.id.roll_text))
+        val diceValue = Dice(6).roll()
+        resultTextView.text = diceValue.toString()
+        val diceImage: ImageView = findViewById(R.id.dice_image)
+        val drawableResource = when (diceValue) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(drawableResource)
+        Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
     }
 
     fun sendMessage(view: View) {
