@@ -2,4 +2,8 @@
     <string name="app_name">android_practice</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="birthday_text">birthday!</string>
+    <string name="birthday_text2" />
+    <string name="birthday_from" />
+    <string name="roll_text">Roll</string>
 </resources>
