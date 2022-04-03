@@ -1,5 +1,7 @@
 package com.example.android_practice.models
 
-class DoD(val name: String) {
+import java.io.Serializable
+
+class DoD(val name: String): Serializable {
 
 }

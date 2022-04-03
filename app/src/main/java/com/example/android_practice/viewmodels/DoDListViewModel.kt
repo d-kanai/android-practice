@@ -18,7 +18,7 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     }
 
     val dodList: MutableLiveData<MutableList<DoD>> by lazy { MutableLiveData<MutableList<DoD>>() }
-    val navigation: MutableLiveData<Page> = MutableLiveData<Page>()
+    val navigationToDetail: MutableLiveData<DoD> = MutableLiveData<DoD>()
 
     init {
         load()
@@ -31,9 +31,9 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     }
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
-        return AdapterView.OnItemClickListener { adapterView, view, i, l ->
+        return AdapterView.OnItemClickListener { parent, view, position, id ->
             println("on click list item")
-            navigation.value = Page.DoDDetail
+            navigationToDetail.value = parent.getItemAtPosition(position) as DoD
         }
     }
 

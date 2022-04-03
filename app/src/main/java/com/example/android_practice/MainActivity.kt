@@ -36,8 +36,12 @@ class MainActivity : AppCompatActivity() {
         dodListViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
             (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
         })
-        dodListViewModelObj.navigation.observe(this@MainActivity) { navigation ->
-            startActivity(Intent(this@MainActivity, DodDetailActivity::class.java))
+        dodListViewModelObj.navigationToDetail.observe(this@MainActivity) { dod: DoD ->
+            val intent = Intent(this@MainActivity, DodDetailActivity::class.java).apply {
+                putExtra("dod", dod)
+            }
+            startActivity(intent)
+
         }
     }
 
