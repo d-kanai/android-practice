@@ -1,5 +1,6 @@
 package com.example.android_practice.viewmodels
 
+import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,7 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     }
 
     val dodList: MutableLiveData<MutableList<DoD>> by lazy { MutableLiveData<MutableList<DoD>>() }
+    var inputDoDName = MutableLiveData<String>()
     val navigationToDetail: MutableLiveData<DoD> = MutableLiveData<DoD>()
 
     init {
@@ -28,6 +30,11 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
         dodRepository.findDoDList() {
             this.dodList.postValue(it.items)
         }
+    }
+
+    fun onSubmitNewDoD(view: View) {
+        println("on submit New DoD")
+        println(inputDoDName.value)
     }
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
