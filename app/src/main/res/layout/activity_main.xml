@@ -23,12 +23,34 @@
 
         <ListView
             android:id="@+id/dod_list_view"
-            android:layout_width="409dp"
-            android:layout_height="405dp"
-            app:onItemClickListener="@{dodListViewModel.getOnClickListItemListener()}"
+            android:layout_width="421dp"
+            android:layout_height="303dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:onItemClickListener="@{dodListViewModel.getOnClickListItemListener()}" />
+
+        <EditText
+            android:id="@+id/edit_text_dod_name"
+            android:layout_width="231dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dod_list_view" />
+
+        <Button
+            android:id="@+id/dod_create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Create"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_text_dod_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.494" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
