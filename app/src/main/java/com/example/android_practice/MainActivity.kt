@@ -26,16 +26,24 @@ class MainActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 lifecycleOwner = this@MainActivity
-                dodViewModel = dodViewModelObj
-                dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
-                dodViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
-                    (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
-                })
-                dodViewModelObj.navigation.observe(this@MainActivity) { navigation ->
-                    startActivity(Intent(this@MainActivity, DoDDetailActivity::class.java))
-                }
+                binding()
+                observe()
             }
 
+    }
+
+    private fun ActivityMainBinding.observe() {
+        dodViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
+            (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
+        })
+        dodViewModelObj.navigation.observe(this@MainActivity) { navigation ->
+            startActivity(Intent(this@MainActivity, DoDDetailActivity::class.java))
+        }
+    }
+
+    private fun ActivityMainBinding.binding() {
+        dodViewModel = dodViewModelObj
+        dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
     }
 
 }
