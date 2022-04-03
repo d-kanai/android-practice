@@ -8,7 +8,7 @@ import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.ListView
 import androidx.databinding.BindingAdapter
-import com.example.android_practice.databinding.ListItemCellBinding
+import com.example.android_practice.databinding.DodListItemBinding
 import com.example.android_practice.models.DoD
 
 @BindingAdapter("onItemClickListener")
@@ -24,12 +24,12 @@ class ListViewAdapter<T>(
         val binding = if (convertView == null) {
             val inflater = LayoutInflater.from(context)
             // https://developer.android.com/topic/libraries/data-binding/expressions?hl=ja
-            val tBinding: ListItemCellBinding = ListItemCellBinding.inflate(inflater, parent, false)
+            val tBinding: DodListItemBinding = DodListItemBinding.inflate(inflater, parent, false)
             // tagにインスタンスをセット(convertViewが存在する場合に使い回すため)
             tBinding.root.tag = tBinding
             tBinding
         } else {
-            convertView.tag as ListItemCellBinding
+            convertView.tag as DodListItemBinding
         }
 
         binding.dod = getItem(position) as DoD
