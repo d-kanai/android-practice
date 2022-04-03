@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
         })
         dodListViewModelObj.navigation.observe(this@MainActivity) { navigation ->
-            startActivity(Intent(this@MainActivity, DoDDetailActivity::class.java))
+            startActivity(Intent(this@MainActivity, DodDetailActivity::class.java))
         }
     }
 
