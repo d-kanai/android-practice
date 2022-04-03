@@ -1,5 +1,6 @@
 package com.example.android_practice
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -27,12 +28,14 @@ class MainActivity : AppCompatActivity() {
                 lifecycleOwner = this@MainActivity
                 dodViewModel = dodViewModelObj
                 dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
-                (dodViewModel as DoDViewModel).dodList.observe(
-                    this@MainActivity,
-                    Observer { dodList ->
-                        (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
-                    })
+                dodViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
+                    (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
+                })
+                dodViewModelObj.navigation.observe(this@MainActivity) { navigation ->
+                    startActivity(Intent(this@MainActivity, DoDDetailActivity::class.java))
+                }
             }
 
     }
+
 }

@@ -6,6 +6,7 @@
         <entry key="../../../../Library/Android/sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.6213541666666667" />
         <entry key="app/src/main/res/layout/activity_dice.xml" value="0.6213541666666667" />
         <entry key="app/src/main/res/layout/activity_display_message.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_dod_detail.xml" value="0.4765625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/dod_list_item.xml" value="0.7588541666666667" />
         <entry key="app/src/main/res/layout/list_item_cell.xml" value="0.4765625" />

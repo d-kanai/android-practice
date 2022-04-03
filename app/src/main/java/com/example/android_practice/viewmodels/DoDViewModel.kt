@@ -18,13 +18,13 @@ class DoDViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     }
 
     val dodList: MutableLiveData<MutableList<DoD>> by lazy { MutableLiveData<MutableList<DoD>>() }
+    val navigation: MutableLiveData<Page> = MutableLiveData<Page>()
 
     init {
         load()
     }
 
     private fun load() {
-        println("load DoD List")
         dodRepository.findDoDList() {
             this.dodList.postValue(it.items)
         }
@@ -32,11 +32,14 @@ class DoDViewModel(private val dodRepository: DoDRepository) : ViewModel() {
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
         return AdapterView.OnItemClickListener { adapterView, view, i, l ->
-            println("on click trigger from xml")
-            val dodList1 = dodList.value
-            dodList1?.add(DoD("APPEND"))
-            dodList.value = dodList1
+            println("on click list item")
+            navigation.value = Page.DoDDetail()
         }
     }
 
+}
+
+sealed class Page {
+    class DoDDetail : Page()
+    class DoDList : Page()
 }

@@ -7,6 +7,7 @@ import java.io.IOException
 
 class DoDRepository {
     fun findDoDList(callBackFetchDoDList: (DoDListResponse) -> Unit) {
+
         val client = OkHttpClient()
         val url = "http://192.168.10.109:9000/dods"
         val request = Request.Builder().url(url).get().build()
