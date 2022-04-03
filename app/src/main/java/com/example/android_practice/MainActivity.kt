@@ -10,14 +10,14 @@ import com.example.android_practice.databinding.ActivityMainBinding
 import com.example.android_practice.lib.ListViewAdapter
 import com.example.android_practice.models.DoD
 import com.example.android_practice.repositories.DoDRepository
-import com.example.android_practice.viewmodels.DoDViewModel
+import com.example.android_practice.viewmodels.DoDListViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val dodViewModelObj: DoDViewModel by lazy {
-        val factory = DoDViewModel.Factory(DoDRepository())
-        ViewModelProvider(this, factory)[DoDViewModel::class.java]
+    private val dodListViewModelObj: DoDListViewModel by lazy {
+        val factory = DoDListViewModel.Factory(DoDRepository())
+        ViewModelProvider(this, factory)[DoDListViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,16 +33,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun ActivityMainBinding.observe() {
-        dodViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
+        dodListViewModelObj.dodList.observe(this@MainActivity, Observer { dodList ->
             (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
         })
-        dodViewModelObj.navigation.observe(this@MainActivity) { navigation ->
+        dodListViewModelObj.navigation.observe(this@MainActivity) { navigation ->
             startActivity(Intent(this@MainActivity, DoDDetailActivity::class.java))
         }
     }
 
     private fun ActivityMainBinding.binding() {
-        dodViewModel = dodViewModelObj
+        dodListViewModel = dodListViewModelObj
         dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
     }
 

@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android_practice.models.DoD
 import com.example.android_practice.repositories.DoDRepository
 
-class DoDViewModel(private val dodRepository: DoDRepository) : ViewModel() {
+class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     class Factory(
         private val dodRepository: DoDRepository
     ) : ViewModelProvider.NewInstanceFactory() {
         @Suppress("unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return DoDViewModel(dodRepository) as T
+            return DoDListViewModel(dodRepository) as T
         }
     }
 
@@ -33,13 +33,12 @@ class DoDViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
         return AdapterView.OnItemClickListener { adapterView, view, i, l ->
             println("on click list item")
-            navigation.value = Page.DoDDetail()
+            navigation.value = Page.DoDDetail
         }
     }
 
 }
 
 sealed class Page {
-    class DoDDetail : Page()
-    class DoDList : Page()
+    object DoDDetail : Page()
 }

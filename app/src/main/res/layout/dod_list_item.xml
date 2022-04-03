@@ -8,7 +8,7 @@ xmlns:tools="http://schemas.android.com/tools">
         type="com.example.android_practice.models.DoD" />
     <variable
         name="viewModel"
-        type="com.example.android_practice.viewmodels.DoDViewModel" />
+        type="com.example.android_practice.viewmodels.DoDListViewModel" />
 </data>
 
 <LinearLayout
