@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="viewModel" type="com.example.android_practice.viewmodels.DoDViewModel" />
+        <variable name="dodViewModel" type="com.example.android_practice.viewmodels.DoDViewModel" />
         <variable name="countViewModel" type="com.example.android_practice.viewmodels.CountViewModel" />
         <import type="android.view.View" />
     </data>
@@ -26,6 +26,7 @@
             android:id="@+id/dod_list_view"
             android:layout_width="409dp"
             android:layout_height="405dp"
+            app:onItemClickListener="@{dodViewModel.getOnItemClickListener()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
