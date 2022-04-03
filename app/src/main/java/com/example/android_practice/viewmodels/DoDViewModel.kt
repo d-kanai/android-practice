@@ -15,7 +15,9 @@ class DoDViewModel : ViewModel() {
 
     private fun load() {
         println("load DoD List")
-        this.dodList.value = DoDRepository().findDoDList()
+        DoDRepository().findDoDList() {
+            this.dodList.postValue(it.items)
+        }
     }
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
