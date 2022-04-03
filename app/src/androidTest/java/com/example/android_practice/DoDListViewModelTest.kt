@@ -51,12 +51,14 @@ class DoDListViewModelTest {
         assertEquals(3, dodListViewModel.dodList.value!!.size)
         assertEquals("Arrow", dodListViewModel.dodList.value!![2].name)
     }
+
 }
+
 
 class FakeDoDRepository : DoDRepository() {
     var createApiDoDName: String? = null
 
-    override fun findDoDList(onSuccess: (DoDListResponse) -> Unit) {
+    override fun findDoDList(onSuccess: ((DoDListResponse) -> Unit)) {
         println("mock")
         onSuccess(
             DoDListResponse(
