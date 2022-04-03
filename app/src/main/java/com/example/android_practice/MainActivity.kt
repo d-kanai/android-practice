@@ -9,10 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.example.android_practice.repositories.DoDRepository
+import com.example.android_practice.viewmodels.CountViewModel
+import com.example.android_practice.viewmodels.DoDViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,38 +45,4 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-class DoDViewModel : ViewModel() {
-    val dodList: MutableLiveData<List<DoD>> by lazy { MutableLiveData<List<DoD>>() }
 
-    init {
-        load()
-    }
-
-    private fun load() {
-        val dodList = DoDRepository().findDoDList()
-        this.dodList.value = dodList
-    }
-
-}
-
-class DoD(val name: String) {
-
-}
-
-
-class CountViewModel : ViewModel() {
-    val count: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
-
-    init {
-        initCount()
-    }
-
-    private fun initCount() {
-        count.value = 100
-    }
-
-    fun countUp() {
-        count.value = count.value!!.plus(1)
-    }
-
-}
