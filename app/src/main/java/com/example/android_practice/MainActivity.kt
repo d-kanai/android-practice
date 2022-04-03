@@ -29,9 +29,8 @@ class MainActivity : AppCompatActivity() {
                 countViewModel = countViewModelObj
                 dodViewModel = dodViewModelObj
                 dodListView.adapter = ListViewAdapter(applicationContext, ArrayList(0))
-                (dodViewModel as DoDViewModel).dodList.observe(this@MainActivity, Observer { item ->
-                    val adapter = dodListView.adapter as ListViewAdapter
-                    adapter.updateItems(item)
+                (dodViewModel as DoDViewModel).dodList.observe(this@MainActivity, Observer { dodList ->
+                    (dodListView.adapter as ListViewAdapter).updateItems(dodList)
                 })
             }
 

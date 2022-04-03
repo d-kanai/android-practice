@@ -1,6 +1,5 @@
 package com.example.android_practice.viewmodels
 
-import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,17 +18,12 @@ class DoDViewModel : ViewModel() {
         this.dodList.value = DoDRepository().findDoDList()
     }
 
-    fun getOnItemClickListener(): AdapterView.OnItemClickListener {
-        return AdapterView.OnItemClickListener { adapterView, view, i, l ->
-            println("on click trigger from xml")
-            val dodList = this.dodList.value
-            dodList?.add(DoD("APPEND"))
-            this.dodList.value = dodList
-        }
+    fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
+        return AdapterView.OnItemClickListener { adapterView, view, i, l -> onClickListItem() }
     }
 
-    fun onClickListItem(view: View?) {
-        println("onClick DoD List Item")
+    private fun onClickListItem() {
+        println("on click trigger from xml")
         val dodList = this.dodList.value
         dodList?.add(DoD("APPEND"))
         this.dodList.value = dodList

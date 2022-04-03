@@ -26,7 +26,7 @@
             android:id="@+id/dod_list_view"
             android:layout_width="409dp"
             android:layout_height="405dp"
-            app:onItemClickListener="@{dodViewModel.getOnItemClickListener()}"
+            app:onItemClickListener="@{dodViewModel.getOnClickListItemListener()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
