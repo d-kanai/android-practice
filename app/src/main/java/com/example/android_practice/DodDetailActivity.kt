@@ -11,7 +11,7 @@ import com.example.android_practice.viewmodels.DoDDetailViewModel
 
 class DodDetailActivity : AppCompatActivity() {
 
-    private val dodDetailViewModelObj: DoDDetailViewModel by lazy {
+    private val dodDetailViewModel: DoDDetailViewModel by lazy {
         val factory = DoDDetailViewModel.Factory(DoDRepository())
         ViewModelProvider(this, factory)[DoDDetailViewModel::class.java]
     }
@@ -24,6 +24,7 @@ class DodDetailActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityDodDetailBinding>(this, R.layout.activity_dod_detail)
             .apply {
                 lifecycleOwner = this@DodDetailActivity
+                viewModel = dodDetailViewModel
                 dod = dodParam
             }
     }
