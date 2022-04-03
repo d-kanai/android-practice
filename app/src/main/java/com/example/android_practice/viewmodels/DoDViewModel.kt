@@ -31,14 +31,12 @@ class DoDViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     }
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
-        return AdapterView.OnItemClickListener { adapterView, view, i, l -> onClickListItem() }
-    }
-
-    private fun onClickListItem() {
-        println("on click trigger from xml")
-        val dodList = this.dodList.value
-        dodList?.add(DoD("APPEND"))
-        this.dodList.value = dodList
+        return AdapterView.OnItemClickListener { adapterView, view, i, l ->
+            println("on click trigger from xml")
+            val dodList1 = dodList.value
+            dodList1?.add(DoD("APPEND"))
+            dodList.value = dodList1
+        }
     }
 
 }

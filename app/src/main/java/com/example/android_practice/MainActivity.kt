@@ -9,7 +9,6 @@ import com.example.android_practice.databinding.ActivityMainBinding
 import com.example.android_practice.lib.ListViewAdapter
 import com.example.android_practice.models.DoD
 import com.example.android_practice.repositories.DoDRepository
-import com.example.android_practice.viewmodels.CountViewModel
 import com.example.android_practice.viewmodels.DoDViewModel
 
 
@@ -19,9 +18,6 @@ class MainActivity : AppCompatActivity() {
         val factory = DoDViewModel.Factory(DoDRepository())
         ViewModelProvider(this, factory)[DoDViewModel::class.java]
     }
-    private val countViewModelObj: CountViewModel by lazy {
-        ViewModelProvider(this).get(CountViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +25,13 @@ class MainActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
             .apply {
                 lifecycleOwner = this@MainActivity
-                countViewModel = countViewModelObj
                 dodViewModel = dodViewModelObj
                 dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
-                (dodViewModel as DoDViewModel).dodList.observe(this@MainActivity, Observer { dodList ->
-                    (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
-                })
+                (dodViewModel as DoDViewModel).dodList.observe(
+                    this@MainActivity,
+                    Observer { dodList ->
+                        (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
+                    })
             }
 
     }
