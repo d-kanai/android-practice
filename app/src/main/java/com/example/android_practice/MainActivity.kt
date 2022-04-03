@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.android_practice.repositories.DoDRepository
 
@@ -24,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         val dodList = viewModel.findDoDList()
         val a = dodList.map { dod -> dod.name }.toList()
         listView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, a)
+
+        val countViewModel: CountViewModel by viewModels()
+        countViewModel.countValue.observe(this,
+            Observer { countValue ->
+                findViewById<TextView>(R.id.count_text).text = countValue.toString()
+            }
+        )
+        findViewById<TextView>(R.id.count_up_button).setOnClickListener { countViewModel.countUp() }
     }
 
     private fun onClickListItem(view: View) {
@@ -50,4 +60,17 @@ class DoDViewModel : ViewModel() {
 
 class DoD(val name: String) {
 
+}
+
+
+class CountViewModel : ViewModel() {
+    var countValue = MutableLiveData(0)
+
+    fun countUp() {
+        countValue.value = countValue.value!!.plus(1)
+    }
+
+    fun getCount(): String {
+        return countValue.value.toString()
+    }
 }
