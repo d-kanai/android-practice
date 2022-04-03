@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android_practice.databinding.ActivityMainBinding
 import com.example.android_practice.lib.ListViewAdapter
 import com.example.android_practice.models.DoD
+import com.example.android_practice.repositories.DoDRepository
 import com.example.android_practice.viewmodels.CountViewModel
 import com.example.android_practice.viewmodels.DoDViewModel
 
@@ -15,7 +16,8 @@ import com.example.android_practice.viewmodels.DoDViewModel
 class MainActivity : AppCompatActivity() {
 
     private val dodViewModelObj: DoDViewModel by lazy {
-        ViewModelProvider(this).get(DoDViewModel::class.java)
+        val factory = DoDViewModel.Factory(DoDRepository())
+        ViewModelProvider(this, factory)[DoDViewModel::class.java]
     }
     private val countViewModelObj: CountViewModel by lazy {
         ViewModelProvider(this).get(CountViewModel::class.java)
