@@ -1,5 +1,6 @@
 package com.example.android_practice.viewmodels
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -14,7 +15,7 @@ class CountViewModel : ViewModel() {
         count.value = 100
     }
 
-    fun countUp() {
+    fun countUp(view: View) {
         count.value = count.value!!.plus(1)
     }
 
