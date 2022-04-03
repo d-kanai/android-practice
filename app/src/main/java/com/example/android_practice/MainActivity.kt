@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_practice.databinding.ActivityMainBinding
 import com.example.android_practice.lib.ListViewAdapter
+import com.example.android_practice.models.DoD
 import com.example.android_practice.viewmodels.CountViewModel
 import com.example.android_practice.viewmodels.DoDViewModel
 
@@ -28,9 +29,9 @@ class MainActivity : AppCompatActivity() {
                 lifecycleOwner = this@MainActivity
                 countViewModel = countViewModelObj
                 dodViewModel = dodViewModelObj
-                dodListView.adapter = ListViewAdapter(applicationContext, ArrayList(0))
+                dodListView.adapter = ListViewAdapter(applicationContext, listOf<DoD>())
                 (dodViewModel as DoDViewModel).dodList.observe(this@MainActivity, Observer { dodList ->
-                    (dodListView.adapter as ListViewAdapter).updateItems(dodList)
+                    (dodListView.adapter as ListViewAdapter<DoD>).updateItems(dodList)
                 })
             }
 

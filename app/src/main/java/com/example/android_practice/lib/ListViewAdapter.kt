@@ -16,9 +16,9 @@ fun setOnItemClickListener(listView: ListView, listener: AdapterView.OnItemClick
     listView.onItemClickListener = listener
 }
 
-class ListViewAdapter(
+class ListViewAdapter<T>(
     private val context: Context,
-    private var items: List<DoD>
+    private var items: List<T>
 ) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding = if (convertView == null) {
@@ -33,18 +33,16 @@ class ListViewAdapter(
         }
 
         binding.dod = getItem(position) as DoD
-        // 即時バインド
         binding.executePendingBindings()
-
         return binding.root
     }
 
-    fun updateItems(items: List<DoD>) {
+    fun updateItems(items: List<T>) {
         this.items = items
         notifyDataSetChanged()
     }
 
-    override fun getItem(position: Int): Any {
+    override fun getItem(position: Int): T {
         return items[position]
     }
 
