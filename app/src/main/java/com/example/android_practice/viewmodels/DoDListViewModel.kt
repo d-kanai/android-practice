@@ -36,7 +36,8 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
         println("on submit New DoD")
         println(inputDoDName.value)
         dodRepository.createDoD(inputDoDName.value) {
-            println(it.name)
+            this.dodList.value?.add(it)
+            this.dodList.postValue(this.dodList.value)
         }
     }
 
