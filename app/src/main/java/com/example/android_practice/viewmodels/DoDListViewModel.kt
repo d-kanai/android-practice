@@ -35,6 +35,9 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
     fun onSubmitNewDoD(view: View) {
         println("on submit New DoD")
         println(inputDoDName.value)
+        dodRepository.createDoD(inputDoDName.value) {
+            println(it.name)
+        }
     }
 
     fun getOnClickListItemListener(): AdapterView.OnItemClickListener {
