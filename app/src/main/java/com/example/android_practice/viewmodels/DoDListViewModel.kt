@@ -26,7 +26,7 @@ class DoDListViewModel(private val dodRepository: DoDRepository) : ViewModel() {
         load()
     }
 
-    fun load() {
+    private fun load() {
         dodRepository.findDoDList() {
             this.dodList.postValue(it.items)
         }

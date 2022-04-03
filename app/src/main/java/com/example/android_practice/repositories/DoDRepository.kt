@@ -28,7 +28,7 @@ open class DoDRepository {
         })
     }
 
-    fun createDoD(name: String?, onSuccess: (dod: DoD) -> Unit) {
+    open fun createDoD(name: String?, onSuccess: (dod: DoD) -> Unit) {
         val client = OkHttpClient()
         val url = "http://192.168.10.109:9000/dods"
         val mediaTypeJson = "application/json".toMediaTypeOrNull()
