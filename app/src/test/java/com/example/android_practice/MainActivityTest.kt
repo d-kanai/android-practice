@@ -17,8 +17,10 @@ class MainActivityTest {
     @Test
     fun loadDoDListWhenOnCreate() {
         //given
+        //TODO: turn on PowerMockito
 //        val pmock = PowerMockito.mock(DoDRepository::class.java)
 //        `when`(pmock.findDoDList(){})
+        //TODO: use latest style
         val activity: MainActivity = Robolectric.setupActivity(MainActivity::class.java);
         //when
         val listViewText = activity.findViewById<TextView>(R.id.tvName)
