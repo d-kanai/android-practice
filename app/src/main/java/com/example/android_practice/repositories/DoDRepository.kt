@@ -7,7 +7,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 
-open class DoDRepository {
+public open class DoDRepository {
     open fun findDoDList(onSuccess: (DoDListResponse) -> Unit) {
         val client = OkHttpClient()
         val url = "http://192.168.10.109:9000/dods"

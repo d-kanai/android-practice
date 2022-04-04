@@ -19,7 +19,7 @@ class MainActivityTest {
         //given
         //TODO: turn on PowerMockito
 //        val pmock = PowerMockito.mock(DoDRepository::class.java)
-//        `when`(pmock.findDoDList(){})
+//        `when`(pmock.findDoDList() {})
         val activity: MainActivity = Robolectric.setupActivity(MainActivity::class.java);
         //when
         val listViewText = activity.findViewById<TextView>(R.id.tvName)
