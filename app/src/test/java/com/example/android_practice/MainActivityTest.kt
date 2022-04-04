@@ -20,7 +20,6 @@ class MainActivityTest {
         //TODO: turn on PowerMockito
 //        val pmock = PowerMockito.mock(DoDRepository::class.java)
 //        `when`(pmock.findDoDList(){})
-        //TODO: use latest style
         val activity: MainActivity = Robolectric.setupActivity(MainActivity::class.java);
         //when
         val listViewText = activity.findViewById<TextView>(R.id.tvName)
@@ -29,17 +28,14 @@ class MainActivityTest {
     }
 
     @Test
-    fun moveDoDDetailWhenTapDoDListItem() {
+    fun moveDoDDetailPageWhenTapDoDListItem() {
         //given
 //        val pmock = PowerMockito.mock(DoDRepository::class.java)
 //        `when`(pmock.findDoDList(){})
         val activity: MainActivity = Robolectric.setupActivity(MainActivity::class.java);
         //when
         val listView = activity.findViewById<ListView>(R.id.dod_list_view)
-        listView.performItemClick(
-            listView.getChildAt(0), 0,
-            listView.getChildAt(0).id.toLong()
-        );
+        listView.performItemClick(listView.getChildAt(0), 0, listView.getChildAt(0).id.toLong());
         //then
         val actual = shadowOf(RuntimeEnvironment.application).nextStartedActivity
         assertEquals("com.example.android_practice.DodDetailActivity", actual.component!!.className)
