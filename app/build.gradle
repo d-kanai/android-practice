@@ -31,11 +31,11 @@ android {
         versionName "1.0"
 
         //TODO: how switch dynamic from AndroidStudio Run. from CommnadLine -Pcucumber
-        if (project.ext.has("cucumber")) {
+//        if (project.ext.has("cucumber")) {
             testInstrumentationRunner "com.example.android_practice.test.CucumberTest"
-        } else {
-            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        }
+//        } else {
+//            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        }
 
     }
 

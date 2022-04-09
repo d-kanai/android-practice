@@ -24,12 +24,11 @@ class MyApplication : Application() {}
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    //For Test Factory
     companion object {
         private val key = "text"
         fun create(context: Context, text: String? = null): Intent =
-            Intent(context, MainActivity::class.java).putExtra(
-                key, text
-            )
+            Intent(context, MainActivity::class.java).putExtra(key, text)
     }
 
     val dodListViewModelObj: DoDListViewModel by lazy {
