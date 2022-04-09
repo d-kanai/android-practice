@@ -19,13 +19,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class DoDListViewModelTest {
 
-
-    @Test
-    fun useAppContext() {
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.android_practice", appContext.packageName)
-    }
-
     @Test
     fun loadInitDoDList() {
         //when
