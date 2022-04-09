@@ -21,7 +21,6 @@ class MainActivityE2ETest {
     //TODO
     //- wait until view
     //- pipeline
-    //- cucumber?
     //- listview click by text
 
     @Test

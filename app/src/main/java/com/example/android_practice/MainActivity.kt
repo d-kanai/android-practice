@@ -1,6 +1,7 @@
 package com.example.android_practice
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,14 @@ class MyApplication : Application() {}
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private val key = "text"
+        fun create(context: Context, text: String? = null): Intent =
+            Intent(context, MainActivity::class.java).putExtra(
+                key, text
+            )
+    }
 
     val dodListViewModelObj: DoDListViewModel by lazy {
         val factory = DoDListViewModel.Factory(DoDRepository())
