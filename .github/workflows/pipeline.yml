@@ -8,20 +8,25 @@ on:
 
 jobs:
   espresso_test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-java@v1
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          java-version: 11
-            #      - name: Install Android SDK
-            #        uses: malinskiy/action-android/install-sdk@release/0.0.5
-      - name: Build project
-        run: ./gradlew assemble --stacktrace
-      - name: Run instrumentation tests
-        uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
-        with:
+          api-level: 30
           script: ./gradlew connectedAndroidTest --stacktrace
-          api: 25
-          tag: default
-          abi: x86
+        #      - uses: actions/setup-java@v1
+        #        with:
+        #          java-version: 11
+        #            #      - name: Install Android SDK
+        #            #        uses: malinskiy/action-android/install-sdk@release/0.0.5
+        #      - name: Build project
+        #        run: ./gradlew assemble --stacktrace
+        #      - name: Run instrumentation tests
+        #        uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
+        #        with:
+        #          script: ./gradlew connectedAndroidTest --stacktrace
+        #          api: 25
+        #          tag: default
+        #          abi: x86
