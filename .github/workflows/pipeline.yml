@@ -15,6 +15,8 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
+          profile: Nexus 5X
+          emulator-build: 7425822
           script: ./gradlew connectedAndroidTest --stacktrace
         #      - uses: actions/setup-java@v1
         #        with:
