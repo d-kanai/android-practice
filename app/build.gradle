@@ -24,11 +24,13 @@ android {
 
     testOptions {
         unitTests {
+            all {
+                jvmArgs '-noverify'
+            }
 //            finalizedBy jacocoTestReport // report is always generated after tests run
             includeAndroidResources = true
         }
     }
-
 
     defaultConfig {
         applicationId "com.example.android_practice"
@@ -69,7 +71,7 @@ android {
 }
 
 //For fix show coverage
-configurations.all{
+configurations.all {
     resolutionStrategy {
         eachDependency { details ->
             if ('org.jacoco' == details.requested.group) {
