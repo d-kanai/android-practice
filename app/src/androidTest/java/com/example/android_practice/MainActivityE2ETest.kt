@@ -18,6 +18,13 @@ class MainActivityE2ETest {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
+    //TODO
+    //- wait until view
+    //- pipeline
+    //- cucumber?
+    //- appium?
+    //- listview click by text
+
     @Test
     fun `DoDを登録し表示される`() {
         DoDリストページ
