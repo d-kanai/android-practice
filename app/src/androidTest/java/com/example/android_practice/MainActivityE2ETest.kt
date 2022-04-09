@@ -22,7 +22,6 @@ class MainActivityE2ETest {
     //- wait until view
     //- pipeline
     //- cucumber?
-    //- appium?
     //- listview click by text
 
     @Test
