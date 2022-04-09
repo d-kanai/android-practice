@@ -11,16 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-      - uses: reactivecircus/android-emulator-runner@v2
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.0.5
+      - name: Build project
+        run: ./gradlew assemble --stacktrace
+      - name: Run instrumentation tests
+        uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
         with:
-          api-level: 30
-          target: default
-          arch: x86
-          profile: Nexus 6
           script: ./gradlew connectedAndroidTest --stacktrace
+          api: 25
+          tag: default
+          abi: x86
