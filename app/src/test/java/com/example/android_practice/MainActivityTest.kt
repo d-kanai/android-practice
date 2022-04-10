@@ -1,5 +1,7 @@
 package com.example.android_practice
 
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
 import com.example.android_practice.models.DoD
@@ -47,6 +49,24 @@ class MainActivityTest {
         val actual = shadowOf(RuntimeEnvironment.application).nextStartedActivity
         assertEquals("com.example.android_practice.DodDetailActivity", actual.component!!.className)
         assertEquals("Long Method", (actual.extras!!["dod"] as DoD).name)
+    }
+
+    @Test
+    fun createNewDoD() {
+        //given
+        stubDoDListApi(DoDListResponse(mutableListOf(DoD("Long Method"))))
+        stubDoDCreateApi(DoD("Coverage"))
+        //when
+        val activity: MainActivity = Robolectric.setupActivity(MainActivity::class.java);
+        activity.findViewById<EditText>(R.id.edit_text_dod_name).setText("Coverage")
+        activity.findViewById<Button>(R.id.dod_create_button).performClick()
+        //then
+        val dodCreateApi = postRequestedFor(urlEqualTo("/dods"))
+        assertEquals(findAll(dodCreateApi)[0].bodyAsString, """{"name":"Coverage"}""")
+    }
+
+    private fun stubDoDCreateApi(dod: DoD) {
+        stubFor(post("/dods").willReturn(ok().withBody(Gson().toJson(dod))))
     }
 
     private fun stubDoDListApi(dodListApiResponse: DoDListResponse) {
