@@ -6,11 +6,7 @@ const opts = {
   port: 4723,
   capabilities: {
     platformName: "Android",
-    //platformVersion: "11",
     deviceName: "Android Emulator",
-    //app: "/Users/d.kanai/workspace/code/private/android-practice/appium/ApiDemos-debug.apk",
-    //appPackage: "io.appium.android.apis",
-    //appActivity: ".view.TextFields",
     appPackage: "com.example.android_practice",
     appActivity: ".MainActivity",
     automationName: "UiAutomator2"

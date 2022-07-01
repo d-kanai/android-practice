@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+ 
+   <groupId>com.mycompany</groupId>
+   <artifactId>junit5-maven</artifactId>
+   <version>1.0-SNAPSHOT</version>
+   <packaging>jar</packaging>
+ 
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <java.version>11</java.version>
+      <junit.jupiter.version>5.8.2</junit.jupiter.version>
+      <junit.platform.version>1.8.2</junit.platform.version>
+      <selenide.appium.version>1.7.4</selenide.appium.version>
+      <commons.io.version>2.11.0</commons.io.version>
+      <org.slf4j.version>1.7.32</org.slf4j.version>
+      <io.cucumber.version>7.2.3</io.cucumber.version>
+   </properties>
+ 
+   <build>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+               <source>${java.version}</source>
+               <target>${java.version}</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+         </plugin>
+      </plugins>
+   </build>
+ 
+   <dependencies>
+      <dependency>
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter</artifactId>
+         <version>${junit.jupiter.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.junit.platform</groupId>
+         <artifactId>junit-platform-suite</artifactId>
+         <version>${junit.platform.version}</version>
+         <scope>test</scope>
+      </dependency>      <!-- <dependency>
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter-engine</artifactId>
+         <version>${junit.jupiter.version}</version>
+         <scope>test</scope>
+      </dependency> -->
+      <dependency>
+        <groupId>com.codeborne</groupId>
+        <artifactId>selenide-appium</artifactId>
+        <version>${selenide.appium.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>${org.slf4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>${io.cucumber.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>${io.cucumber.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>io.cucumber</groupId>
+         <artifactId>cucumber-junit-platform-engine</artifactId>
+         <version>${io.cucumber.version}</version>
+         <scope>test</scope>
+      </dependency>
+    </dependencies>
+ 
+</project>

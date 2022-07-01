@@ -1,0 +1,40 @@
+apply plugin: 'java'
+
+defaultTasks 'clean', 'test'
+
+repositories {
+  mavenCentral()
+  maven {
+    url "https://oss.sonatype.org/content/repositories/snapshots"
+    mavenContent { snapshotsOnly() }
+  }
+}
+
+dependencies {
+  testImplementation 'com.codeborne:selenide-appium:1.7.4'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+  testImplementation 'commons-io:commons-io:2.11.0'
+  testRuntimeOnly 'org.slf4j:slf4j-simple:1.7.32'
+}
+
+task libs(type: Sync) {
+  from configurations.compileClasspath
+  from configurations.testRuntimeClasspath
+  into "$buildDir/lib"
+}
+
+testClasses.dependsOn libs
+
+[compileJava, compileTestJava]*.options.collect {options -> options.encoding = 'UTF-8'}
+[compileJava, compileTestJava]*.options.collect {options -> options.debug = true}
+[compileJava, compileTestJava]*.sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.targetCompatibility = 1.8
+
+test {
+  useJUnitPlatform()
+  systemProperties = [
+    'file.encoding': 'UTF-8',
+    'BUILD_URL': System.getenv()['BUILD_URL']
+  ]
+  testLogging.showStandardStreams = true
+}
