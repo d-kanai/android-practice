@@ -8,9 +8,11 @@ const opts = {
     platformName: "Android",
     //platformVersion: "11",
     deviceName: "Android Emulator",
-    app: "/Users/d.kanai/workspace/code/private/android-practice/appium/ApiDemos-debug.apk",
-    appPackage: "io.appium.android.apis",
-    appActivity: ".view.TextFields",
+    //app: "/Users/d.kanai/workspace/code/private/android-practice/appium/ApiDemos-debug.apk",
+    //appPackage: "io.appium.android.apis",
+    //appActivity: ".view.TextFields",
+    appPackage: "com.example.android_practice",
+    appActivity: ".MainActivity",
     automationName: "UiAutomator2"
   }
 };
