@@ -1,5 +1,6 @@
 package com.example.android_practice.repositories
 
+import android.util.Log
 import com.example.android_practice.models.DoD
 import com.google.gson.Gson
 import okhttp3.*
@@ -10,12 +11,13 @@ import java.io.IOException
 public open class DoDRepository {
     open fun findDoDList(onSuccess: (DoDListResponse) -> Unit) {
         val client = OkHttpClient()
-        val url = "http://192.168.10.109:9000/dods"
+        val url = "http://192.168.10.101:9000/dods"
         val request = Request.Builder().url(url).get().build()
         client.newCall(request).enqueue(object : Callback {
 
             override fun onResponse(call: Call, response: Response) {
                 val json = response.body?.string()
+                Log.d("APP", json.toString())
                 println(json)
                 val dodListResponse =
                     Gson().fromJson(json, DoDListResponse::class.java) as DoDListResponse
@@ -30,7 +32,7 @@ public open class DoDRepository {
 
     open fun createDoD(name: String?, onSuccess: (dod: DoD) -> Unit) {
         val client = OkHttpClient()
-        val url = "http://192.168.10.109:9000/dods"
+        val url = "http://192.168.10.101:9000/dods"
         val mediaTypeJson = "application/json".toMediaTypeOrNull()
         val params = "{\"name\":\"${name}\"}"
         println(params)
