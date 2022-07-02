@@ -1,4 +1,4 @@
-package com.redhat.labsjp.sample.at;
+package cucumber;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -14,16 +14,16 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("com/redhat/labsjp/sample/at")
+@SelectClasspathResource("features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.redhat.labsjp.sample.at")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "cucumber")
 public class AcceptanceTest {
 
     public static void openMyApp() {
         closeWebDriver();
         Configuration.startMaximized = false;
         Configuration.browserSize = null;
-        Configuration.browser = AndroidDriverWithMyApp.class.getName();
+        Configuration.browser = AndroidDriverFactory.class.getName();
         open();
     }
 

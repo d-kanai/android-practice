@@ -1,4 +1,6 @@
 node_modules/
+integrationtest/target/
+
 # Built application files
 *.apk
 *.aar
