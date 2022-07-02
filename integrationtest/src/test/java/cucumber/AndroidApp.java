@@ -17,9 +17,9 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "cucumber")
-public class AcceptanceTest {
+public class AndroidApp {
 
-    public static void openMyApp() {
+    public static void launch() {
         closeWebDriver();
         Configuration.startMaximized = false;
         Configuration.browserSize = null;

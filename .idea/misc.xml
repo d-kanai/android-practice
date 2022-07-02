@@ -16,7 +16,7 @@
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/integrationtest/src/test/resources/com/redhat/labsjp/sample/at/FizzBuzz.feature" />
+    <file url="file://$PROJECT_DIR$/integrationTest/src/test/resources/com/redhat/labsjp/sample/at/FizzBuzz.feature" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
