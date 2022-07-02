@@ -12,12 +12,12 @@ public class FizzBuzzStepDefinition {
 
     @When("I fill in {string} to text field")
     public void iFillInToTextField(String text) {
-        $(By.id("input")).setValue(text);
+        $(By.id("edit_text_dod_name")).setValue(text);
     }
 
     @And("I click the button")
     public void iClickTheButton() {
-        $(By.id("button")).click();
+        $(By.id("dod_create_button")).click();
     }
 
     @Then("I should see the text {string}")
