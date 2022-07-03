@@ -1,7 +1,6 @@
 package cucumber.steps;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import cucumber.AndroidApp;
 import io.cucumber.java.en.Given;
 
@@ -14,16 +13,18 @@ public class BaseStep {
     @Given("Open App")
     public void openApp() {
         AndroidApp.launch();
-        wireMockServer.start();
     }
 
     @Given("Set stub response")
     public void setStubResponse() {
+        wireMockServer.start();
         wireMockServer.stubFor(get("/dods")
                 .willReturn(ok()
                         .withBody("{\"items\":[]}")));
         wireMockServer.stubFor(post("/dods")
                 .willReturn(ok()
-                        .withBody("{\"name\":\"Long Method\"}")));
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("{\"name\":\"Long Method\"}"))
+        );
     }
 }
