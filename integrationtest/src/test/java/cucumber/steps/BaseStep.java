@@ -1,11 +1,11 @@
 package cucumber.steps;
 
-import cucumber.AndroidApp;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import cucumber.AndroidApp;
 import io.cucumber.java.en.Given;
-import org.junit.Rule;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.ok;
 
 public class BaseStep {
 
