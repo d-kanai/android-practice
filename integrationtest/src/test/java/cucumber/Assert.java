@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.is;
 
 public class Assert {
 
-    public static void containTextInScreen(String text) {
+    public static void containTextInAndroidScreen(String text) {
         String textViewString = String.format("TextView\" text=\"%s\"", text);
         String pageSource = getWebDriver().getPageSource();
         assertThat(pageSource, is(containsString(textViewString)));

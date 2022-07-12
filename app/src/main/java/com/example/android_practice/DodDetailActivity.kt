@@ -1,5 +1,6 @@
 package com.example.android_practice
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -19,6 +20,7 @@ class DodDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_dod_detail)
         val dodParam = intent.getSerializableExtra("dod") as DoD
         DataBindingUtil.setContentView<ActivityDodDetailBinding>(this, R.layout.activity_dod_detail)
@@ -29,3 +31,4 @@ class DodDetailActivity : AppCompatActivity() {
             }
     }
 }
+

@@ -2,6 +2,7 @@ package cucumber.steps;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import cucumber.AndroidApp;
+import cucumber.IOSApp;
 import io.cucumber.java.en.Given;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -10,9 +11,14 @@ public class BaseStep {
 
     WireMockServer wireMockServer = new WireMockServer(9000);
 
-    @Given("Open App")
-    public void openApp() {
+    @Given("Open Android App")
+    public void openAndroidApp() {
         AndroidApp.launch();
+    }
+
+    @Given("Open IOS App")
+    public void openIOSApp() {
+        IOSApp.launch();
     }
 
     @Given("Set stub response")
